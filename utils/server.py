@@ -99,8 +99,8 @@ class Server:
         """
         command_list = []
         time.sleep(2)
-        appium_port_list = self.create_port_list(4700, device_list, platform)
-        bootstrap_port_list = self.create_port_list(4900, device_list, platform)
+        appium_port_list = self.create_port_list(4710, device_list, platform)
+        bootstrap_port_list = self.create_port_list(4910, device_list, platform)
         if platform is None:
             command = "start /b appium -p " + str(appium_port_list[i]) + " -bp " + str(bootstrap_port_list[i]) + \
                       " -U " + device_list[i] + " --session-override "

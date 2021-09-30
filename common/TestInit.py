@@ -4,7 +4,10 @@
 # @Author : Mandy
 
 from common.base_driver import BaseDriver
+from page.common_page import CommonPage
 from page.login_page import LoginPage
+from page.mine_page import MinePage
+from page.register_page import RegisterPage
 from utils.handle import Handle
 from utils.server import Server
 
@@ -14,7 +17,7 @@ class Init(object):
 
     def setup_class(cls) -> None:
         # 必须使用@classmethod 装饰器,所有test运行前运行一次
-        global operation, driver
+        global handle, driver
         # 调用get_driver
         server = Server()
         server.main()
@@ -23,6 +26,10 @@ class Init(object):
         # 实例化Operation
         cls.handle = Handle(cls.driver)
         cls.login_page = LoginPage(cls.handle)
+        cls.mine_page = MinePage(cls.handle)
+        cls.common_page = CommonPage(cls.handle)
+        cls.register_page = RegisterPage(cls.handle)
+
 
     def teardown_class(cls) -> None:
         # 必须使用 @ classmethod装饰器, 所有test运行完后运行一次

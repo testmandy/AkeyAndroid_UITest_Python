@@ -10,6 +10,25 @@ from common.TestInit import Init
 
 @pytest.mark.run
 class TestLogin(Init):
+    def setUp(self):
+        """每个测试用例执行之前做操作"""
+        # 如果发现不在一级页面，点击返回到一级页面
+        while self.handle.find_element('tv_title_back'):
+            self.handle.click(1, 'tv_title_back')
+            print('[MyLog]--------返回上一页')
+        # 如果返回到一级页面发现是登录状态，执行退出登录
+        if self.handle.find_element('tab_mine'):
+            self.logout()
+
+    def logout(self):
+        """前提是当前已经登录，登录成功"""
+        self.common_page.click_tab_mine()
+        self.mine_page.click_settings()
+        self.handle.swipe_on('up')
+        self.mine_page.click_logout()
+        self.common_page.click_btn_sure()
+        time.sleep(15)
+
     @pytest.mark.run
     def test_login_pass(self):
         """登录成功"""

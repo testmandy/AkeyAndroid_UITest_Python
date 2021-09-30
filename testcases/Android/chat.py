@@ -25,7 +25,7 @@ class Chat(TestInit):
         # 点击我的收藏
         self.handle.waiting_click(1, 'chatBoxs', 0)
         # 长按录音键
-        self.handle.tap_long('chat_voice_btn', 3)
+        self.handle.tap_test('chat_voice_btn', 3)
         # 输入文字发送
         self.handle.waiting_send_keys(1, 'chat_content', 'test123456')
         # 键盘发送，66代表键盘的enter
