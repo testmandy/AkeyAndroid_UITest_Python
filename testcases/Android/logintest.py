@@ -3,6 +3,9 @@
 # @Time : 2021/9/24 14:42
 # @Author : Mandy
 import time
+
+import pytest
+
 from common.Init import TestInit
 
 
@@ -56,6 +59,7 @@ class Test(TestInit):
         else:
             assert 'Failed-------没有找到登录页面哦'
 
+    @pytest.mark.run(order=1)
     def changeServer(self):
         # 点击换一个
         if self.handle.get_element('choose_server'):

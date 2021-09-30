@@ -2,21 +2,25 @@
 
 # @Time : 2021/9/28 14:40
 # @Author : Mandy
-from page.login_page import LoginPage
+import time
+
+import pytest
+from common.TestInit import Init
 
 
-class LoginCase:
-    def __init__(self):
-        self.login_page = LoginPage()
-
-    def login_pass(self):
+@pytest.mark.run
+class TestLogin(Init):
+    @pytest.mark.run
+    def test_login_pass(self):
         """登录成功"""
         self.login_page.send_username('15356658837')
         self.login_page.send_password('lulu1314')
         self.login_page.click_accept()
         self.login_page.click_login()
+        time.sleep(15)
 
-    def login_user_error(self):
+    @pytest.mark.skip
+    def test_login_user_error(self):
         """登录成功"""
         self.login_page.send_username('15012345678')
         self.login_page.send_password('123456')
@@ -28,7 +32,8 @@ class LoginCase:
         else:
             return False
 
-    def login_password_error(self):
+    @pytest.mark.skip
+    def test_login_password_error(self):
         """登录成功"""
         self.login_page.send_username('15356658837')
         self.login_page.send_password('123456')

@@ -12,6 +12,7 @@ class ReadIni:
         else:
             self.file_path = file_path
         self.data = self.read_ini()
+        self.config = configparser.ConfigParser()
 
     def read_ini(self):
         read_ini = configparser.ConfigParser()
@@ -25,6 +26,12 @@ class ReadIni:
             section = section
         return self.data.get(section, key)
 
+    def set_ini(self, section, key, value):
+        try:
+            self.config.set(section, key, value)
+            self.config.write(open(self.file_path, 'r+'))
+        except:
+            assert '写入数据失败'
 
 # if __name__ == '__main__':
 #     readIni = ReadIni()

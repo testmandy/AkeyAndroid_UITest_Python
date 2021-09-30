@@ -124,7 +124,7 @@ class Server:
         定义方法：每次执行前先kill掉node进程
         """
         server_list = self.dos.excute_cmd_result('tasklist | find "node.exe"')
-        if len(server_list)>0:
+        if len(server_list) > 0:
             self.dos.excute_cmd('taskkill -F -PID node.exe')
 
     def main(self, platform=None):
