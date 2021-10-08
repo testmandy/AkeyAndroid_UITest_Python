@@ -19,10 +19,9 @@ def run():
         config.set_ini('env', 'environment', str(environment))
         print("运行环境为：", environment)
 
-    # os.system('py.test testcases/ --alluredir ./target/allure-results')
     os.system('pytest testcases/ --alluredir ./temp')
     # 执行命令 allure generate ./temp -o ./report --clean ，生成测试报告
-    os.system('allure generate ./temp -o ./report --clean')
+    # os.system('allure generate ./temp -o ./report --clean')
 
 
 if __name__ == '__main__':
