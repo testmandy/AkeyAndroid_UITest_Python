@@ -117,7 +117,7 @@ class Server:
         """
         start_appium_list = self.create_appium_command(i, device_list, platform)
         print("[MyLog]--------" + str(start_appium_list))
-        self.dos.excute_cmd('set BUILD_ID = DONTKILLME')
+        # self.dos.excute_cmd('set BUILD_ID = DONTKILLME')
         self.dos.excute_cmd(start_appium_list[0])
 
     def kill_server(self):

@@ -10,8 +10,13 @@ from common.TestInit import Init
 
 @pytest.mark.run
 class TestLogin(Init):
-    def setUp(self):
+    def setup_method(self):
         """每个测试用例执行之前做操作"""
+        # 如果发现更新提示，点击取消
+        if self.handle.find_element('btn_update'):
+            self.handle.waiting_click(1, 'tv_update_cancel')
+        else:
+            pass
         # 如果发现不在一级页面，点击返回到一级页面
         while self.handle.find_element('tv_title_back'):
             self.handle.click(1, 'tv_title_back')

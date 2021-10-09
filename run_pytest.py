@@ -19,7 +19,11 @@ def run():
         config.set_ini('env', 'environment', str(environment))
         print("运行环境为：", environment)
 
-    os.system('pytest testcases/ --alluredir ./temp')
+    os.system('pytest testcases/ --alluredir ./allure-results')
+    # 生成测试报告
+    os.system('allure generate ./allure-results- -o ./allure-report --clean')
+
+    # os.system('pytest testcases/ --alluredir ./temp')
     # 执行命令 allure generate ./temp -o ./report --clean ，生成测试报告
     # os.system('allure generate ./temp -o ./report --clean')
 
