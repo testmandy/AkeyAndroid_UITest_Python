@@ -14,7 +14,7 @@ class TestLogin(Init):
         """每个测试用例执行之前做操作"""
         # 如果发现更新提示，点击取消
         if self.handle.find_element('btn_update'):
-            self.handle.waiting_click(1, 'tv_update_cancel')
+            self.handle.click(1, 'tv_update_cancel')
         else:
             pass
         # 如果发现不在一级页面，点击返回到一级页面

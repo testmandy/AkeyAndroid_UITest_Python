@@ -13,7 +13,7 @@ class Chat(TestInit):
         print('------------------setup----------------')
         # 如果发现更新提示，点击取消
         # if handle.find_element('btn_update'):
-        #     handle.waiting_click(1, 'tv_update_cancel')
+        #     handle.click(1, 'tv_update_cancel')
         # else:
         #     pass
 
@@ -23,12 +23,12 @@ class Chat(TestInit):
 
     def favorite(self):
         # 点击我的收藏
-        self.handle.waiting_click(1, 'chatBoxs', 0)
+        self.handle.click(1, 'chatBoxs', 0)
         # 长按录音键
         self.handle.tap_test('chat_voice_btn', 3)
         # 输入文字发送
-        self.handle.waiting_send_keys(1, 'chat_content', 'test123456')
+        self.handle.send_keys(1, 'chat_content', 'test123456')
         # 键盘发送，66代表键盘的enter
         self.driver.keyevent(66)
         # 点击更多
-        self.handle.waiting_click(1, 'chat_add_more_btn')
+        self.handle.click(1, 'chat_add_more_btn')
