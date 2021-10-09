@@ -75,8 +75,6 @@ class Handle:
             flag = False
         return flag
 
-
-
     def get_size(self):
         """
         获取屏幕大小
@@ -174,5 +172,3 @@ class Handle:
         time.sleep(2)
         tost_element = ("xpath", "//*[contains(@text," + message + ")]")
         return WebDriverWait(self.driver, 10, 0.1).until(EC.presence_of_element_located(tost_element))
-
-

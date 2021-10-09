@@ -4,12 +4,21 @@
 # @Author : Mandy
 
 from common.base_driver import BaseDriver
+from page.chat_page import ChatPage
 from page.common_page import CommonPage
 from page.login_page import LoginPage
 from page.mine_page import MinePage
 from page.register_page import RegisterPage
 from utils.handle import Handle
 from utils.server import Server
+
+
+def setup_module():
+    print('Setup Module')
+
+
+def teardown_module():
+    print("Teardown Module")
 
 
 class Init(object):
@@ -29,6 +38,8 @@ class Init(object):
         cls.mine_page = MinePage(cls.handle)
         cls.common_page = CommonPage(cls.handle)
         cls.register_page = RegisterPage(cls.handle)
+        cls.chat_page = ChatPage(cls.handle)
+
 
     def teardown_class(cls) -> None:
         # 必须使用 @ classmethod装饰器, 所有test运行完后运行一次

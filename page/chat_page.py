@@ -13,6 +13,10 @@ class ChatPage:
         """点击我的收藏"""
         self.driver.click(1, 'contact_avatar_img', 0)
 
+    def click_voice(self):
+        """点击录音按钮"""
+        self.driver.click(1, 'chat_voice_btn')
+
     def press_btn_voice(self):
         """点击录音按钮"""
         self.driver.long_press('chat_voice_btn')
