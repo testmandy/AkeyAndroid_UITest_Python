@@ -11,18 +11,12 @@ from common.TestInit import Init
 @pytest.mark.run
 class TestLogin(Init):
     def setup_method(self):
-        """每个测试用例执行之前做操作"""
-        # 如果发现更新提示，点击取消
-        if self.handle.find_element('btn_update'):
-            self.handle.click(1, 'tv_update_cancel')
-        else:
-            pass
-        # 如果发现不在一级页面，点击返回到一级页面
-        while self.handle.find_element('tv_title_back'):
-            self.handle.click(1, 'tv_title_back')
-            print('[MyLog]--------返回上一页')
-        # 如果返回到一级页面发现是登录状态，执行退出登录
-        if self.handle.find_element('tab_mine'):
+        """
+        如果发现更新提示，点击取消
+        如果已登录则退出登录
+        """
+        self.common_page.cancel_update()
+        if self.common_page.has_logged_in():
             self.logout()
 
     def logout(self):
@@ -32,21 +26,21 @@ class TestLogin(Init):
         self.handle.swipe_on('up')
         self.mine_page.click_logout()
         self.common_page.click_btn_sure()
-        time.sleep(15)
+        time.sleep(10)
 
     @pytest.mark.run
     def test_login_pass(self):
         """登录成功"""
-        self.login_page.send_username('15356658837')
-        self.login_page.send_password('lulu1314')
+        self.login_page.send_username('21000000000')
+        self.login_page.send_password('q11111111')
         self.login_page.click_accept()
         self.login_page.click_login()
-        time.sleep(15)
+        time.sleep(10)
 
     @pytest.mark.skip
     def test_login_user_error(self):
         """登录成功"""
-        self.login_page.send_username('15012345678')
+        self.login_page.send_username('000000')
         self.login_page.send_password('123456')
         self.login_page.click_accept()
         self.login_page.click_login()
@@ -59,7 +53,7 @@ class TestLogin(Init):
     @pytest.mark.skip
     def test_login_password_error(self):
         """登录成功"""
-        self.login_page.send_username('15356658837')
+        self.login_page.send_username('210000000000')
         self.login_page.send_password('123456')
         self.login_page.click_accept()
         self.login_page.click_login()

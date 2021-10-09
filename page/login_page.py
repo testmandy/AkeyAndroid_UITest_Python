@@ -86,3 +86,8 @@ class LoginPage:
     def click_next(self):
         """忘记密码-点击下一步"""
         self.driver.click(1, 'nextStep')
+
+    def click_qr_image(self):
+        """忘记密码-点击下一步"""
+        self.driver.click(1, 'select_qr_code_img')
+

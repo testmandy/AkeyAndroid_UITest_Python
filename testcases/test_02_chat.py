@@ -11,36 +11,29 @@ from common.TestInit import Init
 @pytest.mark.run
 class TestMine(Init):
     def setup_method(self):
-        time.sleep(2)
-        """每个测试用例执行之前做操作"""
-        # 如果发现更新提示，点击取消
-        if self.handle.find_element('btn_update'):
-            print(u'[MyLog]--------下次再说')
-            self.handle.click(1, 'tv_update_cancel')
-        else:
-            print(u'[MyLog]--------不需要更新')
-        # 如果发现不在一级页面，点击返回到一级页面
-        while self.handle.find_element('tv_title_back'):
-            self.handle.click(1, 'tv_title_back')
-            print(u'[MyLog]--------返回上一页')
-        # 如果发现当前没有登录，先登录
-        if not self.handle.find_element('tab_mine'):
+        """
+        如果发现更新提示，点击取消
+        如果发现当前没有登录，先登录
+        """
+        time.sleep(10)
+        self.common_page.cancel_update()
+        if not self.common_page.has_logged_in():
             self.login_pass()
 
     def login_pass(self):
         """登录成功"""
-        self.login_page.send_username('15356658837')
-        self.login_page.send_password('lulu1314')
+        self.login_page.send_username('210000000000')
+        self.login_page.send_password('p11111111')
         self.login_page.click_accept()
         self.login_page.click_login()
         time.sleep(15)
 
-    @pytest.mark.run
+    @pytest.mark.skip
     def test_favorite(self):
         # 点击密信
         self.common_page.click_tab_message()
         # 点击我的收藏
-        self.chat_page.click_chatBox()
+        self.chat_page.click_chatBox(0)
         self.handle.capture('my_favorite')
         # 点击录音键
         self.chat_page.click_voice()
@@ -50,6 +43,35 @@ class TestMine(Init):
         self.chat_page.send_message('test123456')
         # 点击发送按钮
         self.chat_page.click_send()
+        self.handle.capture('message')
+        # 点击更多
+        self.chat_page.click_more()
+
+    @pytest.mark.run
+    def test_chat(self):
+        # 点击密信
+        self.common_page.click_tab_message()
+        # 点击我的收藏
+        self.chat_page.click_chatBox(1)
+        # 点击录音键
+        self.chat_page.click_voice()
+        # 输入文字发送
+        self.chat_page.send_message('test123456')
+        # 点击发送按钮
+        self.chat_page.click_send()
+        self.handle.capture('message')
+        # 点击图片
+        self.chat_page.click_photo()
+        # 选择第一张照片
+        self.common_page.choose_image()
+        # 点击确认发送
+        self.common_page.click_confirm()
+        # 点击相机
+        self.chat_page.click_camera()
+        # 点击拍照
+        self.common_page.click_shutter()
+        # 点击确认
+        self.common_page.click_camera_btn_done()
         self.handle.capture('message')
         # 点击更多
         self.chat_page.click_more()
