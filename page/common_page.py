@@ -91,3 +91,20 @@ class CommonPage:
         """点击取消发送"""
         self.driver.click(1, 'btn_cancel')
 
+    def login_pass(self):
+        """登录成功"""
+        self.driver.send_keys(1, 'accountInput', '21000000000')
+        self.driver.send_keys(1, 'codeInput', 'q11111111')
+        if not self.driver.get_element('check_privacy').is_selected():
+            self.driver.click(1, 'check_privacy')
+        self.driver.click(1, 'realLogin')
+        time.sleep(15)
+
+    def logout(self):
+        """前提是当前已经登录，登录成功"""
+        self.driver.click(1, 'tab_mine')
+        self.driver.click(1, 'start_settings_layout')
+        self.driver.swipe_on('up')
+        self.driver.click(1, 'logout_btn')
+        self.driver.click(1, 'btn_p')
+        time.sleep(15)

@@ -17,16 +17,7 @@ class TestServer(Init):
         """
         self.common_page.cancel_update()
         if self.common_page.has_logged_in():
-            self.logout()
-
-    def logout(self):
-        """前提是当前已经登录，登录成功"""
-        self.common_page.click_tab_mine()
-        self.mine_page.click_settings()
-        self.handle.swipe_on('up')
-        self.mine_page.click_logout()
-        self.common_page.click_btn_sure()
-        time.sleep(15)
+            self.common_page.logout()
 
     @pytest.mark.run
     def test_search_success(self):

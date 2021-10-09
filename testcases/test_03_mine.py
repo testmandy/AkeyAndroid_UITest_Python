@@ -17,15 +17,7 @@ class TestMine(Init):
         """
         self.common_page.cancel_update()
         if not self.common_page.has_logged_in():
-            self.login_pass()
-
-    def login_pass(self):
-        """登录成功"""
-        self.login_page.send_username('210000000000')
-        self.login_page.send_password('p11111111')
-        self.login_page.click_accept()
-        self.login_page.click_login()
-        time.sleep(15)
+            self.common_page.login_pass()
 
     @pytest.mark.run
     def test_edit_info(self):

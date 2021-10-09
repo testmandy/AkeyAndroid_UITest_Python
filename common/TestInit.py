@@ -2,6 +2,7 @@
 
 # @Time : 2021/9/28 11:41
 # @Author : Mandy
+import time
 
 from common.base_driver import BaseDriver
 from page.chat_page import ChatPage
@@ -39,6 +40,7 @@ class Init(object):
         cls.common_page = CommonPage(cls.handle)
         cls.register_page = RegisterPage(cls.handle)
         cls.chat_page = ChatPage(cls.handle)
+        time.sleep(10)
 
 
     def teardown_class(cls) -> None:

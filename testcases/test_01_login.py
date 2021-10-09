@@ -26,7 +26,7 @@ class TestLogin(Init):
         self.handle.swipe_on('up')
         self.mine_page.click_logout()
         self.common_page.click_btn_sure()
-        time.sleep(10)
+        time.sleep(15)
 
     @pytest.mark.run
     def test_login_pass(self):

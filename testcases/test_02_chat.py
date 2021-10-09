@@ -15,18 +15,9 @@ class TestMine(Init):
         如果发现更新提示，点击取消
         如果发现当前没有登录，先登录
         """
-        time.sleep(10)
         self.common_page.cancel_update()
         if not self.common_page.has_logged_in():
-            self.login_pass()
-
-    def login_pass(self):
-        """登录成功"""
-        self.login_page.send_username('210000000000')
-        self.login_page.send_password('p11111111')
-        self.login_page.click_accept()
-        self.login_page.click_login()
-        time.sleep(15)
+            self.common_page.login_pass()
 
     @pytest.mark.skip
     def test_favorite(self):
